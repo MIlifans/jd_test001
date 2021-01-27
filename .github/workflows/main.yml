@@ -11,7 +11,7 @@ on:
 jobs:
   repo-sync:
     env:
-      PAT: ${{ github.event.client_payload.PAT || secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
+      PAT: ${{ github.event.client_payload.7d4508be49284a5013a9b4389e8a1f35af86fd3c || secrets.7d4508be49284a5013a9b4389e8a1f35af86fd3c }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11
       dst_key: ${{ secrets.GITEE_PRIVATE_KEY }} # 我自己同步到gitee使用，其他人可忽略
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
@@ -22,12 +22,12 @@ jobs:
 
       - name: 开始🔄自动同步🔄
         uses: repo-sync/github-sync@v2
-        if: env.PAT
+        if: env.7d4508be49284a5013a9b4389e8a1f35af86fd3c
         with:
           source_repo: "https://github.com/shuye72/MyActions.git"
           source_branch: "main"
           destination_branch: "main"
-          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
+          github_token: ${{ github.event.client_payload.7d4508be49284a5013a9b4389e8a1f35af86fd3c || secrets.7d4508be49284a5013a9b4389e8a1f35af86fd3c }}
       # 我自己同步到gitee使用，其他人可忽略
       - name: sync github -> gitee
         uses: Yikun/hub-mirror-action@master
